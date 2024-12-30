@@ -1,10 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
 FN:Tristán Vilugrón
+ORG:Dimerc S.A.
 TEL;TYPE=cell:+56996118041
 EMAIL;TYPE=personal:tristan.vilugron.flores@gmail.com
-EMAIL;TYPE=work:tristan.profesional@empresa.com
-TITLE:Business Intelligence Manager
-URL:https://www.linkedin.com/in/tristanvilugron
+EMAIL;TYPE=work:tristan.vilugron@dimerc.cl
+TITLE:Business Intelligence Analyst
+URL:https://www.linkedin.com/in/tristan-vilugron/
 PHOTO:https://qrcgcustomers.s3-eu-west-1.amazonaws.com/account33474735/44582528_1.png?0.6574580034042521
+ADR;TYPE=home:;;Alberto Pepper 1784;Renca;Región Metropolitana;8641196;Chile
 END:VCARD
