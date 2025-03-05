@@ -47,9 +47,37 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .contact-card h2 {
-            margin-top: 0;
+        /* Estilos para Tabs */
+        .tab-container {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
             color: #003366;
+            background-color: #f4f4f9;
+            border-radius: 10px 10px 0 0;
+            transition: background 0.3s ease;
+        }
+
+        .tab.active {
+            background: #003366;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .contact-card a {
@@ -93,10 +121,25 @@
             background: #0055AA;
         }
 
-        .logo-img {
-            width: 50px;
-            height: auto;
+        .service-list {
+            list-style: none; /* Quitamos el estilo predeterminado */
+            padding: 0;
         }
+
+        .service-list li {
+            position: relative;
+            padding-left: 20px; /* Espacio para el icono */
+        }
+
+        .service-list li::before {
+            content: "◆"; /* Símbolo de rombo */
+            color: #436a91; /* Color del icono */
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
     </style>
 </head>
 <body>
@@ -107,43 +150,78 @@
     </header>
 
     <div class="contact-card">
-        <h2>Datos de Contacto</h2>
-        <table>
-            <tr>
-                <td><strong>Teléfono</strong></td>
-                <td>&nbsp;</td>
-                <td>:</td>
-                <td>&nbsp;</td>
-                <td><a href="tel:+56996118041">+56 9 9611 8041</a></td>
-            </tr>
-
-            <tr>
-                <td><strong>Email</strong></td>
-                <td>&nbsp;</td>
-                <td>:</td>
-                <td>&nbsp;</td>
-                <td><a href="mailto:tristan.vilugron.flores@gmail.com">tristan.vilugron.flores@gmail.com</a></td>
-            </tr>
-            
-        </table>
-
-        <p> </p>
-        <a href="" target="_blank"><b>B.E.A.T. S.A.</b></a>
-        </br>[Business Engineering, Automation & Tech]
-
-        <div class="social-media">
-            <a href="https://www.linkedin.com/in/tristan-vilugron" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-            </a>
-            <a href="https://wa.me/56996118041?text=Hola%20Tristán,%20me%20gustaría%20contactarte." target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-            </a>
-            <a href="mailto:tristan.vilugron.flores@gmail.com" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Android_Email_4.4_Icon.png" alt="Correo Electrónico">
-            </a>
+        <!-- Tabs -->
+        <div class="tab-container">
+            <div class="tab active" onclick="openTab(event, 'contacto')">Datos de Contacto</div>
+            <div class="tab" onclick="openTab(event, 'info')">Servicios</div>
         </div>
 
-        <a href="contacto.vcf" download class="download-btn">Descargar contacto</a>
+        <!-- Contenido de Tabs -->
+        <div id="contacto" class="tab-content active">
+            <table>
+                <tr>
+                    <td><strong>Teléfono</strong></td>
+                    <td>&nbsp;</td>
+                    <td>:</td>
+                    <td>&nbsp;</td>
+                    <td><a href="tel:+56996118041">+56 9 9611 8041</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>&nbsp;</td>
+                    <td>:</td>
+                    <td>&nbsp;</td>
+                    <td><a href="mailto:tristan.vilugron.flores@gmail.com">tristan.vilugron.flores@gmail.com</a></td>
+                </tr>
+            </table>
+            <p></p>
+            <a href="#" target="_blank"><b>B.E.A.T. S.A.</b></a>
+            </br>[Business Engineering, Automation & Tech]
+
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/tristan-vilugron" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+                </a>
+                <a href="https://wa.me/56996118041?text=Hola%20Tristán,%20me%20gustaría%20contactarte." target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                </a>
+                <a href="mailto:tristan.vilugron.flores@gmail.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Android_Email_4.4_Icon.png" alt="Correo Electrónico">
+                </a>
+            </div>
+            <a href="contacto.vcf" download class="download-btn">Descargar contacto</a>
+        </div>
+
+        <div id="info" class="tab-content">
+            <ul class="service-list">
+                <li>Business Intelligence y Analítica de Datos</li>
+                <li>Gestión de proyectos tecnológicos (PMO, Scrum, Kanban)</li>
+                <li>Transformación digital y optimización estratégica</li>
+                <li>Desarrollo de software y soluciones empresariales</li>
+                <li>Dashboards interactivos y reporting avanzado</li>
+                <li>Automatización de procesos y RPA</li>
+            </ul>
+        </div>
     </div>
+
+    <script>
+        function openTab(event, tabId) {
+            // Ocultar todos los contenidos
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            // Remover clase 'active' de todas las pestañas
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            // Mostrar el contenido de la pestaña seleccionada y marcar el tab activo
+            document.getElementById(tabId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
